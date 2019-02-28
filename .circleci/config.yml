@@ -80,12 +80,9 @@ jobs:
       - attach_workspace:
           at: /home/circleci/app/dist
 
-      - run:
-          name: Install and configure dependencies
-          command: |
-            npm install -g --silent gh-pages@2.0.1
-            git config user.email "dereckmartin@github.com"
-            git config user.name  "circleci"
+      - run: 
+          name: Install gh-pages
+          command: npm install -g gh-pages
       - run:
           name: Deploy docks to gh-pages branch
           command: gh-pages --dist dist
