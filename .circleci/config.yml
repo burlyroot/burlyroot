@@ -90,7 +90,7 @@ jobs:
             git config user.name "Dereck Martin"
       - run:
           name: Deploy docks to gh-pages branch
-          command: gh-pages --dist dist
+          command: gh-pages --dist dist/
 
 workflows:
   version: 2
