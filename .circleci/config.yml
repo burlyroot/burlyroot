@@ -62,7 +62,7 @@ jobs:
           command: yarn build:ci
 
       - persist_to_workspace:
-          root: ./
+          root: /
           path: dist
 
   deploy:
@@ -73,7 +73,7 @@ jobs:
             - "02:3d:a1:64:e8:7b:2b:d9:32:45:ff:0b:e9:52:41:07"
       - checkout
       - attach_workspace:
-          at: ./
+          at: /
       - run:
           name: Install and configure dependencies
           command: |
