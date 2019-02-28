@@ -62,7 +62,7 @@ jobs:
           command: yarn build:ci
 
       - persist_to_workspace:
-          root: ~/app
+          root: /home/circleci/app
           path: dist
 
   deploy:
@@ -78,7 +78,7 @@ jobs:
       - run: *install_run
 
       - attach_workspace:
-          at: ~/app
+          at: /home/circleci/app/dist
 
       - run:
           name: Install and configure dependencies
