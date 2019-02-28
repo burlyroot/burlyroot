@@ -49,9 +49,6 @@ jobs:
 
   build:
     <<: *vm_settings
-    environment:
-      - SOURCE_BRANC: master
-      - TARGET_BRANCH: gh-pages
     steps:
       - checkout
 
@@ -64,8 +61,8 @@ jobs:
           name: Build for production
           command: yarn build:ci
 
-      # Store build artifacts
-      - store_artifacts:
+      - persist_to_workspace:
+          root: ./
           path: dist
 
   deploy:
@@ -74,11 +71,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "02:3d:a1:64:e8:7b:2b:d9:32:45:ff:0b:e9:52:41:07"
-      # Install dependencies
-      - restore_cache: *install_restore_cache
-      - run: *install_run
-      - save_cache: *install_save_cache
-      # Build the app for production
+      - checkout
+      - attach_workspace:
+          at: ./
       - run:
           name: Install and configure dependencies
           command: |
