@@ -75,9 +75,6 @@ jobs:
 
   build:
     <<: *vm_settings
-    branches:
-      ignore:
-        - gh-pages
     environment:
       - SOURCE_BRANC: master
       - TARGET_BRANCH: gh-pages
@@ -116,6 +113,9 @@ workflows:
       - build:
           requires:
             - test
+          filters:
+            branches:
+              ignore: gh-pages
       - deploy:
           requires:
             - build
