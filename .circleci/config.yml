@@ -84,6 +84,11 @@ jobs:
           name: Install gh-pages
           command: sudo npm install -g gh-pages
       - run:
+          name: Configure git
+          command: |
+            git config user.email "dereckmartin@github.com"
+            git config user.name "Dereck Martin"
+      - run:
           name: Deploy docks to gh-pages branch
           command: gh-pages --dist dist
 
