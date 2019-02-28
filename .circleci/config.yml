@@ -63,7 +63,7 @@ jobs:
 
       - persist_to_workspace:
           root: /home/circleci/app
-          path: dist
+          paths: dist
 
   deploy:
     <<: *vm_settings
