@@ -94,16 +94,16 @@ jobs:
       - store_artifacts:
           path: dist
 
-    deploy:
-      <<: *vm_settings
-      steps:
-        # Install dependencies
-        - restore_cache: *install_restore_cache
-        - run: *install_run
-        - save_cache: *install_save_cache
-        # Build the app for production
-        - run: yarn build
-        - run: *deploy_app
+  deploy:
+    <<: *vm_settings
+    steps:
+      # Install dependencies
+      - restore_cache: *install_restore_cache
+      - run: *install_run
+      - save_cache: *install_save_cache
+      # Build the app for production
+      - run: yarn build
+      - run: *deploy_app
 
 workflows:
   version: 2
