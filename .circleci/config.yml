@@ -80,7 +80,7 @@ jobs:
       - attach_workspace:
           at: /home/circleci/app/dist
 
-      - run: 
+      - run:
           name: Install gh-pages
           command: sudo npm install -g gh-pages
       - run:
@@ -90,7 +90,7 @@ jobs:
             git config user.name "Dereck Martin"
       - run:
           name: Deploy docks to gh-pages branch
-          command: gh-pages --dist dist/
+          command: gh-pages --dist dist --src "**" --dest .
 
 workflows:
   version: 2
