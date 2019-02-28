@@ -115,9 +115,8 @@ workflows:
       - test
       - build
       - deploy:
-        requires:
-          - test
-          # Only deploy the master branch
-        filters:
-          branches:
-            only: master
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
