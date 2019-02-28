@@ -115,10 +115,9 @@ workflows:
       - test
       - build
       - deploy:
-        # Only deploy if tests pass
         requires:
           - test
           # Only deploy the master branch
-          filters:
-            branches:
-              only: master
+        filters:
+          branches:
+            only: master
